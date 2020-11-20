@@ -23,6 +23,11 @@ Projects developed to apply Computer Networks concepts in a larger scale in more
 
 Program that implements a custom communication protocol to transfer files between two computer using the serial port. It is robust against connection failures as well as noise. For example, if the connection stops mid transfer and is resumed some time later, the file is transferred successfully anyway.
 
+
+### Project 2 - FTP file transfer software
+
+Program that transfers files from the internet using the ftp protocol. It simply needs the address of the ftp server as well as the file name and the file is downloaded.
+
 ---
 
 **Note**:If you find some mistake in this readme or any other part of this repository, feel free to tell me about it!
