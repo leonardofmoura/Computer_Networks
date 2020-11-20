@@ -15,6 +15,14 @@ This folder stores small experiments, developed using the C language to get some
 
 Script that was passed to me by some colleges that uses the [socat](https://linux.die.net/man/1/socat) command to link ttyS0 to ttyS1, so that we can emulate a serial port connection using a single computer for test purposes. Unfortunately I do not know who the original author of the script is.
 
+## Projects
+
+Projects developed to apply Computer Networks concepts in a larger scale in more complex systems. They were both developed with my partners [Miguel Rosa](https://github.com/MSR19) and [Henrique Freitas](https://github.com/Hedwig8).
+
+### Project 1 - File transfer software
+
+Program that implements a custom communication protocol to transfer files between two computer using the serial port. It is robust against connection failures as well as noise. For example, if the connection stops mid transfer and is resumed some time later, the file is transferred successfully anyway.
+
 ---
 
 **Note**:If you find some mistake in this readme or any other part of this repository, feel free to tell me about it!

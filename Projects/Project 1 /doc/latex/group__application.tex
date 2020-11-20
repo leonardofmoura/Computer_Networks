@@ -1,0 +1,119 @@
+\hypertarget{group__application}{}\doxysection{application}
+\label{group__application}\index{application@{application}}
+
+
+Application layer funtions.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structapplication__layer}{application\+\_\+layer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__application_gae20dccf0b40eec61b2ded51925b35f8c}{build\+\_\+control\+\_\+package}} (unsigned char control, struct \mbox{\hyperlink{structapplication__layer}{application\+\_\+layer}} $\ast$info, unsigned char package\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Creates a control package with the specified fields. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__application_gafa353138003bae6c571c31ca94b8d52f}{build\+\_\+data\+\_\+package}} (int sequence\+\_\+num, int data\+\_\+length, unsigned char data\mbox{[}$\,$\mbox{]}, unsigned char package\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Creates a data package with the specified fields. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__application_ga3b27d10a1b08fa5c5d6e9b007844b39a}{process\+\_\+data\+\_\+package}} (unsigned char data\+\_\+package\mbox{[}$\,$\mbox{]}, unsigned char extracted\+\_\+data\mbox{[}$\,$\mbox{]}, int $\ast$sequence\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Processes a received data package. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__application_gafad43aebcaf3d8c806cf18d5962caf32}{process\+\_\+control\+\_\+package}} (unsigned char package\mbox{[}$\,$\mbox{]}, struct \mbox{\hyperlink{structapplication__layer}{application\+\_\+layer}} $\ast$info)
+\begin{DoxyCompactList}\small\item\em Processes a received control package. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Application layer funtions. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__application_gae20dccf0b40eec61b2ded51925b35f8c}\label{group__application_gae20dccf0b40eec61b2ded51925b35f8c}} 
+\index{application@{application}!build\_control\_package@{build\_control\_package}}
+\index{build\_control\_package@{build\_control\_package}!application@{application}}
+\doxysubsubsection{\texorpdfstring{build\_control\_package()}{build\_control\_package()}}
+{\footnotesize\ttfamily int build\+\_\+control\+\_\+package (\begin{DoxyParamCaption}\item[{unsigned char}]{control,  }\item[{struct \mbox{\hyperlink{structapplication__layer}{application\+\_\+layer}} $\ast$}]{info,  }\item[{unsigned char}]{package\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Creates a control package with the specified fields. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em control} & -\/ The control byte of the package \\
+\hline
+{\em info} & -\/ Information about the file being trasfered \\
+\hline
+{\em package} & -\/ Array where the package will be put \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ The size of the array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__application_gafa353138003bae6c571c31ca94b8d52f}\label{group__application_gafa353138003bae6c571c31ca94b8d52f}} 
+\index{application@{application}!build\_data\_package@{build\_data\_package}}
+\index{build\_data\_package@{build\_data\_package}!application@{application}}
+\doxysubsubsection{\texorpdfstring{build\_data\_package()}{build\_data\_package()}}
+{\footnotesize\ttfamily int build\+\_\+data\+\_\+package (\begin{DoxyParamCaption}\item[{int}]{sequence\+\_\+num,  }\item[{int}]{data\+\_\+length,  }\item[{unsigned char}]{data\mbox{[}$\,$\mbox{]},  }\item[{unsigned char}]{package\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Creates a data package with the specified fields. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequence\+\_\+num} & -\/ Sequence number of the package \\
+\hline
+{\em data\+\_\+length} & -\/ Number of the bytes of the data in the package \\
+\hline
+{\em data} & -\/ Data to include in the package \\
+\hline
+{\em package} & -\/ Array where to put the package \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Size of the array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__application_gafad43aebcaf3d8c806cf18d5962caf32}\label{group__application_gafad43aebcaf3d8c806cf18d5962caf32}} 
+\index{application@{application}!process\_control\_package@{process\_control\_package}}
+\index{process\_control\_package@{process\_control\_package}!application@{application}}
+\doxysubsubsection{\texorpdfstring{process\_control\_package()}{process\_control\_package()}}
+{\footnotesize\ttfamily int process\+\_\+control\+\_\+package (\begin{DoxyParamCaption}\item[{unsigned char}]{package\mbox{[}$\,$\mbox{]},  }\item[{struct \mbox{\hyperlink{structapplication__layer}{application\+\_\+layer}} $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+Processes a received control package. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em package} & -\/ The array where the package is stored \\
+\hline
+{\em info} & -\/ Information about the file being trasfered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ The command or -\/1 on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__application_ga3b27d10a1b08fa5c5d6e9b007844b39a}\label{group__application_ga3b27d10a1b08fa5c5d6e9b007844b39a}} 
+\index{application@{application}!process\_data\_package@{process\_data\_package}}
+\index{process\_data\_package@{process\_data\_package}!application@{application}}
+\doxysubsubsection{\texorpdfstring{process\_data\_package()}{process\_data\_package()}}
+{\footnotesize\ttfamily int process\+\_\+data\+\_\+package (\begin{DoxyParamCaption}\item[{unsigned char}]{data\+\_\+package\mbox{[}$\,$\mbox{]},  }\item[{unsigned char}]{extracted\+\_\+data\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{sequence\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Processes a received data package. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+\_\+package} & -\/ The array where the package is stored \\
+\hline
+{\em extracted\+\_\+data} & -\/ The array where the data will be stored \\
+\hline
+{\em sequence\+\_\+num} & -\/ Pointer to an integer where the sequence number of the package will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ The length of the data processed 
+\end{DoxyReturn}

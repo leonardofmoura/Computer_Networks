@@ -1,0 +1,595 @@
+\hypertarget{group__protocol}{}\doxysection{protocol}
+\label{group__protocol}\index{protocol@{protocol}}
+
+
+Functions that interact directly with the serial port.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__protocol_ga530102c366edcd84843ab173a6cce2b5}{change\+\_\+sequence\+\_\+number}} ()
+\begin{DoxyCompactList}\small\item\em defines the current iteration sequence number, setting it to be the last one sent and returning the new sequence number \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga0bad9e00c4f1ae51f9cdbcfe02551f56}{get\+\_\+sequence\+\_\+number}} (unsigned char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Returns the sequence number of the message. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga95cf89c0d217baf8e5dfc36b53240a93}{get\+\_\+sequence\+\_\+answer}} (unsigned char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Returns the sequence number of the answer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga9cdbe65c3bfec4302b419f87c728b1e9}{set\+\_\+sequence\+\_\+number\+\_\+rejected}} (unsigned char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em T\+R\+A\+N\+S\+M\+I\+T\+T\+ER\+: sets last sequence number dependent on the received answer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga6896f7ae406efb93980bedafd7791834}{receive\+\_\+message}} (int serial\+\_\+port, unsigned char $\ast$msg\+\_\+ptr)
+\begin{DoxyCompactList}\small\item\em Receives information through the serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga64f2443a1f3381db27de459e65a7b1d9}{send\+\_\+message}} (int serial\+\_\+port, unsigned char $\ast$sent\+\_\+msg, unsigned char addr, unsigned char c\+\_\+set)
+\begin{DoxyCompactList}\small\item\em Sends a command through the serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga68a3cfca89693bb4472c8b27ec417468}{wait\+\_\+for\+\_\+message}} (int serial\+\_\+port, unsigned char rec\+\_\+addr, unsigned char rec\+\_\+c\+\_\+set)
+\begin{DoxyCompactList}\small\item\em Waits to receive a command. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga00b829ee929cfbbc88096647c74a0e09}{send\+\_\+timed\+\_\+message\+\_\+get\+\_\+answer}} (int serial\+\_\+port, unsigned char addr, unsigned char c\+\_\+set, unsigned char ans\+\_\+addr, unsigned char ans\+\_\+c\+\_\+set, int tries, int timeout\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Sends a message and waits for an answer, if the no answer received or the answer is wrong sends the message again. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_gac4080329e9cb88c5e7d3bf65d654da7c}{serial\+\_\+port\+\_\+connect}} (int serial\+\_\+port, int tries, int timeout)
+\begin{DoxyCompactList}\small\item\em Sends the S\+ET command through the serial port and waits for an UA. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_gad77ab7bf7cc3ba77c4cdc64bf3d7b3be}{serial\+\_\+port\+\_\+wait\+\_\+connection}} (int serial\+\_\+port)
+\begin{DoxyCompactList}\small\item\em Waits for a S\+ET command and sends a UA command. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga2089b1c2a122650e418ad30f6d944255}{serial\+\_\+port\+\_\+start}} (char $\ast$serial\+\_\+port\+\_\+name, char baudrate, struct termios $\ast$newtio, struct termios $\ast$oldtio)
+\begin{DoxyCompactList}\small\item\em Opens a serial port and sets its configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga0a1ec1a1498a1239e99a7de314e935d4}{serial\+\_\+port\+\_\+close}} (int serial\+\_\+port\+\_\+fd, struct termios $\ast$oldtio)
+\begin{DoxyCompactList}\small\item\em Closes the serial port setting its configuration to oldtio. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga5039b3dae0bc1b12a9371c8d6640095c}{serial\+\_\+port\+\_\+end\+\_\+connection}} (int serial\+\_\+port, int tries, int timeout)
+\begin{DoxyCompactList}\small\item\em Ends a serial port connection. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_gaf970ec8d40f8fec6ef4a633f2e7cc074}{serial\+\_\+port\+\_\+wait\+\_\+end\+\_\+connection}} (int serial\+\_\+port, int tries, int timeout)
+\begin{DoxyCompactList}\small\item\em Waits the command to end a connection. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_gafdb0c32793d90ee0cd5e46be21ef0cdb}{build\+\_\+header}} (unsigned char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em receives the empty message and startes building the frame \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga1a9d227b80049817c1ac4469a9a8e98a}{add\+\_\+data\+\_\+to\+\_\+frame}} (unsigned char $\ast$msg, unsigned char $\ast$data, int data\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Adds input to the output msg. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga7b1b4d8accde7e8cb028f7c06563c9c6}{stuffing\+\_\+message}} (unsigned char $\ast$output, unsigned char $\ast$input, int input\+\_\+length)
+\begin{DoxyCompactList}\small\item\em stuffes the data bytes that are equal to special bytes, except the initial and final F\+L\+AG itself \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga0f760632838038d6e6ee4b50e33117de}{send\+\_\+message\+\_\+data}} (int serial\+\_\+port, unsigned char $\ast$data, int data\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Sends data message through the serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga0c5d094a5edce571e53a906aa9874ab8}{answer\+\_\+confirmation}} (unsigned char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Verifies if answer is positive and not duplicated. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_gae0b6369882eddd3ec5f4197649d05f51}{receive\+\_\+answer}} (int serial\+\_\+port)
+\begin{DoxyCompactList}\small\item\em Receives answer to sent message and verifies if answer is accordingly to sent. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga0b4c5b0814630b82dc73f5b9cff28a50}{send\+\_\+timed\+\_\+data\+\_\+get\+\_\+answer}} (int serial\+\_\+port, unsigned char $\ast$data, int data\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Sends a data message (I) and waits for an answer, if nop answer received or the answer is wrong sends the message again. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga650a88f684698667ae26fd92c9f12421}{destuffing\+\_\+message}} (unsigned char $\ast$output, unsigned char $\ast$input, int input\+\_\+length)
+\begin{DoxyCompactList}\small\item\em applies destuffing operation to the message received \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_ga6bbd25da9aa0c351a28bab416e7163eb}{validate\+\_\+header}} (unsigned char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Verifies the header info validity. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_gaf913d934df64cb79a2670f1f3944ca50}{validate\+\_\+data}} (unsigned char $\ast$msg, int msg\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Verifies the data info validity. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_gabdad20cf1556a3545a97a274025233d3}{send\+\_\+answer}} (int serial\+\_\+port, unsigned char $\ast$msg, int msg\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Answers sender, accordingly to the message received. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__protocol_gaedcedad08991f9b20b0804f352f4436b}{receive\+\_\+message\+\_\+data}} (int serial\+\_\+port, unsigned char $\ast$data\+\_\+msg)
+\begin{DoxyCompactList}\small\item\em Receives one data frame through serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions that interact directly with the serial port. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__protocol_ga1a9d227b80049817c1ac4469a9a8e98a}\label{group__protocol_ga1a9d227b80049817c1ac4469a9a8e98a}} 
+\index{protocol@{protocol}!add\_data\_to\_frame@{add\_data\_to\_frame}}
+\index{add\_data\_to\_frame@{add\_data\_to\_frame}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{add\_data\_to\_frame()}{add\_data\_to\_frame()}}
+{\footnotesize\ttfamily int add\+\_\+data\+\_\+to\+\_\+frame (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msg,  }\item[{unsigned char $\ast$}]{data,  }\item[{int}]{data\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Adds input to the output msg. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ msg to be field with data \\
+\hline
+{\em data} & -\/ data to be put in msg \\
+\hline
+{\em data\+\_\+length} & -\/ size of data argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size of msg or negative if error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga0c5d094a5edce571e53a906aa9874ab8}\label{group__protocol_ga0c5d094a5edce571e53a906aa9874ab8}} 
+\index{protocol@{protocol}!answer\_confirmation@{answer\_confirmation}}
+\index{answer\_confirmation@{answer\_confirmation}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{answer\_confirmation()}{answer\_confirmation()}}
+{\footnotesize\ttfamily int answer\+\_\+confirmation (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Verifies if answer is positive and not duplicated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ answer to be analised \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ 1 if OK or 0 if N\+OT OK 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_gafdb0c32793d90ee0cd5e46be21ef0cdb}\label{group__protocol_gafdb0c32793d90ee0cd5e46be21ef0cdb}} 
+\index{protocol@{protocol}!build\_header@{build\_header}}
+\index{build\_header@{build\_header}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{build\_header()}{build\_header()}}
+{\footnotesize\ttfamily int build\+\_\+header (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+receives the empty message and startes building the frame 
+
+T\+R\+A\+N\+S\+M\+I\+T\+T\+ER E\+ND 
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ empty message to be constructed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ 0 if OK or negative if errors occured 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga530102c366edcd84843ab173a6cce2b5}\label{group__protocol_ga530102c366edcd84843ab173a6cce2b5}} 
+\index{protocol@{protocol}!change\_sequence\_number@{change\_sequence\_number}}
+\index{change\_sequence\_number@{change\_sequence\_number}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{change\_sequence\_number()}{change\_sequence\_number()}}
+{\footnotesize\ttfamily int change\+\_\+sequence\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+defines the current iteration sequence number, setting it to be the last one sent and returning the new sequence number 
+
+\begin{DoxyReturn}{Returns}
+int -\/ the current sequence number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga650a88f684698667ae26fd92c9f12421}\label{group__protocol_ga650a88f684698667ae26fd92c9f12421}} 
+\index{protocol@{protocol}!destuffing\_message@{destuffing\_message}}
+\index{destuffing\_message@{destuffing\_message}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{destuffing\_message()}{destuffing\_message()}}
+{\footnotesize\ttfamily int destuffing\+\_\+message (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{output,  }\item[{unsigned char $\ast$}]{input,  }\item[{int}]{input\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+applies destuffing operation to the message received 
+
+R\+E\+C\+E\+I\+V\+ER E\+ND 
+\begin{DoxyParams}{Parameters}
+{\em output} & -\/ destuffed message (M\+U\+ST BE I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED) \\
+\hline
+{\em input} & -\/ stuffed message \\
+\hline
+{\em input\+\_\+length} & -\/ size of input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ size of output and -\/1 if error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga95cf89c0d217baf8e5dfc36b53240a93}\label{group__protocol_ga95cf89c0d217baf8e5dfc36b53240a93}} 
+\index{protocol@{protocol}!get\_sequence\_answer@{get\_sequence\_answer}}
+\index{get\_sequence\_answer@{get\_sequence\_answer}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{get\_sequence\_answer()}{get\_sequence\_answer()}}
+{\footnotesize\ttfamily int get\+\_\+sequence\+\_\+answer (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Returns the sequence number of the answer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ answer to be analised \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ the respective sequence number \mbox{[}0 OR 1\mbox{]} of msg 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga0bad9e00c4f1ae51f9cdbcfe02551f56}\label{group__protocol_ga0bad9e00c4f1ae51f9cdbcfe02551f56}} 
+\index{protocol@{protocol}!get\_sequence\_number@{get\_sequence\_number}}
+\index{get\_sequence\_number@{get\_sequence\_number}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{get\_sequence\_number()}{get\_sequence\_number()}}
+{\footnotesize\ttfamily int get\+\_\+sequence\+\_\+number (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Returns the sequence number of the message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ message to be analised \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ the respective sequence number \mbox{[}0 OR 1\mbox{]} of msg 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_gae0b6369882eddd3ec5f4197649d05f51}\label{group__protocol_gae0b6369882eddd3ec5f4197649d05f51}} 
+\index{protocol@{protocol}!receive\_answer@{receive\_answer}}
+\index{receive\_answer@{receive\_answer}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{receive\_answer()}{receive\_answer()}}
+{\footnotesize\ttfamily int receive\+\_\+answer (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port }\end{DoxyParamCaption})}
+
+
+
+Receives answer to sent message and verifies if answer is accordingly to sent. 
+
+\begin{DoxyReturn}{Returns}
+positive if OK or negative on error (needs to repeat sending) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga6896f7ae406efb93980bedafd7791834}\label{group__protocol_ga6896f7ae406efb93980bedafd7791834}} 
+\index{protocol@{protocol}!receive\_message@{receive\_message}}
+\index{receive\_message@{receive\_message}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{receive\_message()}{receive\_message()}}
+{\footnotesize\ttfamily int receive\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{unsigned char $\ast$}]{msg\+\_\+ptr }\end{DoxyParamCaption})}
+
+
+
+Receives information through the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ The serial file descriptor of the serial port \\
+\hline
+{\em msg\+\_\+ptr} & -\/ The array in which to store the message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ number of bytes received or -\/1 if some error ocurred 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_gaedcedad08991f9b20b0804f352f4436b}\label{group__protocol_gaedcedad08991f9b20b0804f352f4436b}} 
+\index{protocol@{protocol}!receive\_message\_data@{receive\_message\_data}}
+\index{receive\_message\_data@{receive\_message\_data}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{receive\_message\_data()}{receive\_message\_data()}}
+{\footnotesize\ttfamily int receive\+\_\+message\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{unsigned char $\ast$}]{data\+\_\+msg }\end{DoxyParamCaption})}
+
+
+
+Receives one data frame through serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ file descriptor from where the message arrives \\
+\hline
+{\em data\+\_\+msg} & -\/ output, returns the data received \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ size of data\+\_\+msg (all correct), 0 if disconnect command, -\/1 if message should be ignored (some processing or header error) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_gabdad20cf1556a3545a97a274025233d3}\label{group__protocol_gabdad20cf1556a3545a97a274025233d3}} 
+\index{protocol@{protocol}!send\_answer@{send\_answer}}
+\index{send\_answer@{send\_answer}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{send\_answer()}{send\_answer()}}
+{\footnotesize\ttfamily int send\+\_\+answer (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{unsigned char $\ast$}]{msg,  }\item[{int}]{msg\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Answers sender, accordingly to the message received. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ port that the answer will be sent \\
+\hline
+{\em msg} & -\/ message to be analised @ return int -\/ 0 if OK or -\/1 if R\+EJ or repeated (data should be ignored) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__protocol_ga64f2443a1f3381db27de459e65a7b1d9}\label{group__protocol_ga64f2443a1f3381db27de459e65a7b1d9}} 
+\index{protocol@{protocol}!send\_message@{send\_message}}
+\index{send\_message@{send\_message}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{send\_message()}{send\_message()}}
+{\footnotesize\ttfamily int send\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{unsigned char $\ast$}]{sent\+\_\+msg,  }\item[{unsigned char}]{addr,  }\item[{unsigned char}]{c\+\_\+set }\end{DoxyParamCaption})}
+
+
+
+Sends a command through the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ The serial port to send the message \\
+\hline
+{\em sent\+\_\+msg} & -\/ Array where to store the message sent \\
+\hline
+{\em aflag} & -\/ The address of the sender \\
+\hline
+{\em c\+\_\+set} & -\/ The command to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ size of sent message or negative on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga0f760632838038d6e6ee4b50e33117de}\label{group__protocol_ga0f760632838038d6e6ee4b50e33117de}} 
+\index{protocol@{protocol}!send\_message\_data@{send\_message\_data}}
+\index{send\_message\_data@{send\_message\_data}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{send\_message\_data()}{send\_message\_data()}}
+{\footnotesize\ttfamily int send\+\_\+message\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{unsigned char $\ast$}]{data,  }\item[{int}]{data\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Sends data message through the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ The serial port to send the message \\
+\hline
+{\em data} & -\/ The data to be sent \\
+\hline
+{\em data\+\_\+length} & -\/ size of data argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ number of data bytes sent, negative if error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga0b4c5b0814630b82dc73f5b9cff28a50}\label{group__protocol_ga0b4c5b0814630b82dc73f5b9cff28a50}} 
+\index{protocol@{protocol}!send\_timed\_data\_get\_answer@{send\_timed\_data\_get\_answer}}
+\index{send\_timed\_data\_get\_answer@{send\_timed\_data\_get\_answer}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{send\_timed\_data\_get\_answer()}{send\_timed\_data\_get\_answer()}}
+{\footnotesize\ttfamily int send\+\_\+timed\+\_\+data\+\_\+get\+\_\+answer (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{unsigned char $\ast$}]{data,  }\item[{int}]{data\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Sends a data message (I) and waits for an answer, if nop answer received or the answer is wrong sends the message again. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ the file descriptor of the serial port \\
+\hline
+{\em data} & -\/ data to be sent \\
+\hline
+{\em data\+\_\+length} & -\/ size of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ positive if message was send and received expected answer, -\/1 on timeout 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga00b829ee929cfbbc88096647c74a0e09}\label{group__protocol_ga00b829ee929cfbbc88096647c74a0e09}} 
+\index{protocol@{protocol}!send\_timed\_message\_get\_answer@{send\_timed\_message\_get\_answer}}
+\index{send\_timed\_message\_get\_answer@{send\_timed\_message\_get\_answer}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{send\_timed\_message\_get\_answer()}{send\_timed\_message\_get\_answer()}}
+{\footnotesize\ttfamily int send\+\_\+timed\+\_\+message\+\_\+get\+\_\+answer (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{unsigned char}]{addr,  }\item[{unsigned char}]{c\+\_\+set,  }\item[{unsigned char}]{ans\+\_\+addr,  }\item[{unsigned char}]{ans\+\_\+c\+\_\+set,  }\item[{int}]{tries,  }\item[{int}]{timeout\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Sends a message and waits for an answer, if the no answer received or the answer is wrong sends the message again. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ The file descriptor of the serial port \\
+\hline
+{\em addr} & -\/ The address of the command to send \\
+\hline
+{\em c\+\_\+set} & -\/ The command to send \\
+\hline
+{\em ans\+\_\+addr} & -\/ The address expected to receive \\
+\hline
+{\em ans\+\_\+c\+\_\+set} & -\/ The command expected to receive \\
+\hline
+{\em tries} & -\/ Number of tries until a timeout \\
+\hline
+{\em timeout\+\_\+time} & -\/ The time between each try \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ positive if message was sent and received expected answer, -\/1 on timeout 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga0a1ec1a1498a1239e99a7de314e935d4}\label{group__protocol_ga0a1ec1a1498a1239e99a7de314e935d4}} 
+\index{protocol@{protocol}!serial\_port\_close@{serial\_port\_close}}
+\index{serial\_port\_close@{serial\_port\_close}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_close()}{serial\_port\_close()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+close (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port\+\_\+fd,  }\item[{struct termios $\ast$}]{oldtio }\end{DoxyParamCaption})}
+
+
+
+Closes the serial port setting its configuration to oldtio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port\+\_\+fd} & -\/ File descriptor where the serial port is open \\
+\hline
+{\em oldtio} & -\/ Configuration to set the serial port (Usually the configuration it had before startig) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ only 0 for now 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_gac4080329e9cb88c5e7d3bf65d654da7c}\label{group__protocol_gac4080329e9cb88c5e7d3bf65d654da7c}} 
+\index{protocol@{protocol}!serial\_port\_connect@{serial\_port\_connect}}
+\index{serial\_port\_connect@{serial\_port\_connect}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_connect()}{serial\_port\_connect()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+connect (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{int}]{tries,  }\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Sends the S\+ET command through the serial port and waits for an UA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ file descritor of the serial port to connect \\
+\hline
+{\em tries} & -\/ number of tries in case of a timeout \\
+\hline
+{\em timeout} & -\/ number of seconds until a timeout \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ positive if OK or negative if timeout ocurred 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga5039b3dae0bc1b12a9371c8d6640095c}\label{group__protocol_ga5039b3dae0bc1b12a9371c8d6640095c}} 
+\index{protocol@{protocol}!serial\_port\_end\_connection@{serial\_port\_end\_connection}}
+\index{serial\_port\_end\_connection@{serial\_port\_end\_connection}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_end\_connection()}{serial\_port\_end\_connection()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+end\+\_\+connection (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{int}]{tries,  }\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Ends a serial port connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ File escriptor of the serial port \\
+\hline
+{\em tries} & -\/ Number of tries until timeout \\
+\hline
+{\em timeout} & -\/ Time between tries \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ positive if OK or negative on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga2089b1c2a122650e418ad30f6d944255}\label{group__protocol_ga2089b1c2a122650e418ad30f6d944255}} 
+\index{protocol@{protocol}!serial\_port\_start@{serial\_port\_start}}
+\index{serial\_port\_start@{serial\_port\_start}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_start()}{serial\_port\_start()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+start (\begin{DoxyParamCaption}\item[{char $\ast$}]{serial\+\_\+port\+\_\+name,  }\item[{char}]{baudrate,  }\item[{struct termios $\ast$}]{newtio,  }\item[{struct termios $\ast$}]{oldtio }\end{DoxyParamCaption})}
+
+
+
+Opens a serial port and sets its configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port\+\_\+name} & -\/ String containing the file of the driver Ex\+: \char`\"{}/dev/tty\+S1\char`\"{} \\
+\hline
+{\em baudrate} & -\/ Baudrate to set the port \\
+\hline
+{\em newtio} & -\/ Pointer to a termios struct to store the new termios config \\
+\hline
+{\em oldtio} & -\/ Pointer to a termios struct to store the old termios config \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ File descriptor where the serial port is open 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_gad77ab7bf7cc3ba77c4cdc64bf3d7b3be}\label{group__protocol_gad77ab7bf7cc3ba77c4cdc64bf3d7b3be}} 
+\index{protocol@{protocol}!serial\_port\_wait\_connection@{serial\_port\_wait\_connection}}
+\index{serial\_port\_wait\_connection@{serial\_port\_wait\_connection}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_wait\_connection()}{serial\_port\_wait\_connection()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+wait\+\_\+connection (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port }\end{DoxyParamCaption})}
+
+
+
+Waits for a S\+ET command and sends a UA command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ The serial port to listen for a connection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ positive on success or negative on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_gaf970ec8d40f8fec6ef4a633f2e7cc074}\label{group__protocol_gaf970ec8d40f8fec6ef4a633f2e7cc074}} 
+\index{protocol@{protocol}!serial\_port\_wait\_end\_connection@{serial\_port\_wait\_end\_connection}}
+\index{serial\_port\_wait\_end\_connection@{serial\_port\_wait\_end\_connection}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_wait\_end\_connection()}{serial\_port\_wait\_end\_connection()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+wait\+\_\+end\+\_\+connection (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{int}]{tries,  }\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Waits the command to end a connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ File descriptor of the serial port \\
+\hline
+{\em tries} & -\/ Number of tries until a timeout \\
+\hline
+{\em timeout} & -\/ Time between each try \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ positive if OK or negative on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga9cdbe65c3bfec4302b419f87c728b1e9}\label{group__protocol_ga9cdbe65c3bfec4302b419f87c728b1e9}} 
+\index{protocol@{protocol}!set\_sequence\_number\_rejected@{set\_sequence\_number\_rejected}}
+\index{set\_sequence\_number\_rejected@{set\_sequence\_number\_rejected}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{set\_sequence\_number\_rejected()}{set\_sequence\_number\_rejected()}}
+{\footnotesize\ttfamily int set\+\_\+sequence\+\_\+number\+\_\+rejected (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+T\+R\+A\+N\+S\+M\+I\+T\+T\+ER\+: sets last sequence number dependent on the received answer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ message to be analised \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ new last sequence number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga7b1b4d8accde7e8cb028f7c06563c9c6}\label{group__protocol_ga7b1b4d8accde7e8cb028f7c06563c9c6}} 
+\index{protocol@{protocol}!stuffing\_message@{stuffing\_message}}
+\index{stuffing\_message@{stuffing\_message}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{stuffing\_message()}{stuffing\_message()}}
+{\footnotesize\ttfamily int stuffing\+\_\+message (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{output,  }\item[{unsigned char $\ast$}]{input,  }\item[{int}]{input\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+stuffes the data bytes that are equal to special bytes, except the initial and final F\+L\+AG itself 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & -\/ message with the stuffing applied \\
+\hline
+{\em input} & -\/ message to be applied the stuffing \\
+\hline
+{\em input\+\_\+length} & -\/ size of input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ size of output 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_gaf913d934df64cb79a2670f1f3944ca50}\label{group__protocol_gaf913d934df64cb79a2670f1f3944ca50}} 
+\index{protocol@{protocol}!validate\_data@{validate\_data}}
+\index{validate\_data@{validate\_data}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{validate\_data()}{validate\_data()}}
+{\footnotesize\ttfamily int validate\+\_\+data (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msg,  }\item[{int}]{msg\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Verifies the data info validity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ message to be analised \\
+\hline
+{\em msg\+\_\+length} & -\/ size of msg \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ 1 if OK, 0 if not valid 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga6bbd25da9aa0c351a28bab416e7163eb}\label{group__protocol_ga6bbd25da9aa0c351a28bab416e7163eb}} 
+\index{protocol@{protocol}!validate\_header@{validate\_header}}
+\index{validate\_header@{validate\_header}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{validate\_header()}{validate\_header()}}
+{\footnotesize\ttfamily int validate\+\_\+header (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Verifies the header info validity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ message to be analised \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ 0 if OK, -\/1 if not valid header 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protocol_ga68a3cfca89693bb4472c8b27ec417468}\label{group__protocol_ga68a3cfca89693bb4472c8b27ec417468}} 
+\index{protocol@{protocol}!wait\_for\_message@{wait\_for\_message}}
+\index{wait\_for\_message@{wait\_for\_message}!protocol@{protocol}}
+\doxysubsubsection{\texorpdfstring{wait\_for\_message()}{wait\_for\_message()}}
+{\footnotesize\ttfamily int wait\+\_\+for\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+port,  }\item[{unsigned char}]{rec\+\_\+addr,  }\item[{unsigned char}]{rec\+\_\+c\+\_\+set }\end{DoxyParamCaption})}
+
+
+
+Waits to receive a command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+port} & -\/ The file descriptor of the serial port \\
+\hline
+{\em rec\+\_\+addr} & -\/ The addr expecting to receive \\
+\hline
+{\em rec\+\_\+c\+\_\+set} & -\/ The command expecting to receive \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ positive if receives correct message or negative on error 
+\end{DoxyReturn}
